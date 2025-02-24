@@ -147,4 +147,9 @@ void hm_remove(HashMap* hm, char* key) {
     }
 
 }
+
+void hm_free_internal(HashMap* hm) {
+    da_free_internal(&hm.arena);
+    free(hm->map);
+}
 #endif

@@ -112,8 +112,10 @@ void da_remove(DynamicArena* da, int index) {
     /* Other thing we could try: is make int* index so that we can zero it out afterwards the same way that you NULL a pointer after freeing */
 }
 
-
-
+void da_free_internal(DynamicArena* da) {
+    free(da->data);
+    // we should consider designing this as opaque pointers so that this function can also free the DynamicArena* itself 
+}
 /*
 
 the relative index for each cell is either
