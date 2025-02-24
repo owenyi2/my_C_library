@@ -104,8 +104,8 @@ void hm_insert(HashMap* hm, char* key, void* element) {
         index = _linear_probe(hm->map, hm->capacity, key);
 
         /* element is not in HashMap */ 
-        hm->map[index].key = malloc(strlen(key));
-        memcpy(hm->map[index].key, key, strlen(key));
+        hm->map[index].key = malloc(strlen(key) + 1);
+        strcpy(hm->map[index].key, key);
         hm->len += 1;
     } 
     hm->map[index].value_loc = da_push(&hm->arena, element); 
